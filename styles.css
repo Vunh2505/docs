@@ -23,6 +23,7 @@ body {
 #file-list li {
     margin-bottom: 10px;
     display: block;
+    width: 100%; /* Ensure full width */
 }
 
 #file-list .collapsible {
