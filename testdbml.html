@@ -1,127 +1,31 @@
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DBML Visualization</title>
 </head>
 <body>
-    <h1>DBML Visualization</h1>
+    <h1>DBML Diagram Visualization</h1>
     <img id="dbml-diagram" src="" alt="DBML Diagram">
 
     <script>
-        // Replace with your DBML code
-        const dbmlCode = `
-            Project "Service Request Management" {
-  database_type: "PostgreSQL"
-  Note: "Mô hình hóa các thực thể cần thiết cho hệ thống quản lý yêu cầu và dòng tiền."
-}
+        // URL to the DBML file on your server
+        const dbmlFileUrl = 'mydbml.dbml';
 
-Table customer {
-  id int [pk, increment] // Mã định danh khách hàng
-  name varchar(255) [not null] // Tên khách hàng
-  email varchar(255) [not null, unique] // Email liên hệ
-  phone varchar(20) // Số điện thoại
-  address text // Địa chỉ khách hàng
-  created_at timestamp [default: `now()`] // Ngày tạo
-  updated_at timestamp [default: `now()`] // Ngày cập nhật cuối
-}
-
-Table campaign {
-  id int [pk, increment] // Mã định danh campaign
-  customer_id int [ref: > customer.id] // Liên kết tới khách hàng
-  name varchar(255) [not null] // Tên chiến dịch
-  start_date date // Ngày bắt đầu chiến dịch
-  end_date date // Ngày kết thúc chiến dịch
-  created_at timestamp [default: `now()`] // Ngày tạo campaign
-  updated_at timestamp [default: `now()`] // Ngày cập nhật cuối
-}
-
-Table vendor {
-  id int [pk, increment] // Mã định danh vendor
-  name varchar(255) [not null] // Tên vendor
-  contact_name varchar(255) // Tên người liên hệ
-  email varchar(255) [not null, unique] // Email liên hệ
-  phone varchar(20) // Số điện thoại liên hệ
-  address text // Địa chỉ vendor
-  created_at timestamp [default: `now()`] // Ngày tạo
-  updated_at timestamp [default: `now()`] // Ngày cập nhật cuối
-}
-
-Table service_request {
-  id int [pk, increment] // Mã định danh yêu cầu dịch vụ
-  campaign_id int [ref: > campaign.id] // Liên kết tới campaign
-  vendor_id int [ref: > vendor.id] // Liên kết tới vendor
-  title varchar(255) [not null] // Tiêu đề yêu cầu
-  description text // Mô tả chi tiết yêu cầu
-  estimated_amount decimal(15,2) // Ước lượng giá từ vendor
-  service_type enum("type1", "type2", "type3") [not null] // Loại yêu cầu dịch vụ
-  start_date date // Ngày bắt đầu yêu cầu
-  status enum("pending", "approved", "cancelled", "active") [default: "pending"] // Trạng thái yêu cầu
-  created_at timestamp [default: `now()`] // Ngày tạo yêu cầu
-  updated_at timestamp [default: `now()`] // Ngày cập nhật cuối
-}
-
-Table quote {
-  id int [pk, increment] // Mã định danh báo giá
-  campaign_id int [ref: > campaign.id] // Liên kết tới campaign
-  customer_id int [ref: > customer.id] // Liên kết tới khách hàng
-  total_amount decimal(15,2) [not null] // Tổng số tiền báo giá
-  selected boolean [default: false] // Báo giá được chọn hay không
-  created_at timestamp [default: `now()`] // Ngày tạo báo giá
-  updated_at timestamp [default: `now()`] // Ngày cập nhật cuối
-}
-
-Table quote_service_request {
-  id int [pk, increment] // Mã định danh
-  quote_id int [ref: > quote.id] // Liên kết tới báo giá
-  service_request_id int [ref: > service_request.id] // Liên kết tới yêu cầu dịch vụ
-  created_at timestamp [default: `now()`] // Ngày tạo
-  updated_at timestamp [default: `now()`] // Ngày cập nhật cuối
-}
-
-Table contract {
-  id int [pk, increment] // Mã định danh hợp đồng
-  campaign_id int [ref: > campaign.id] // Liên kết tới campaign
-  vendor_id int [ref: > vendor.id, null] // Liên kết tới vendor (hợp đồng đầu vào)
-  customer_id int [ref: > customer.id, null] // Liên kết tới khách hàng (hợp đồng đầu ra)
-  contract_type enum("input", "output") [not null] // Loại hợp đồng: input (đầu vào) hoặc output (đầu ra)
-  signed_date date // Ngày ký kết hợp đồng
-  amount decimal(15,2) [not null] // Giá trị hợp đồng
-  created_at timestamp [default: `now()`] // Ngày tạo hợp đồng
-  updated_at timestamp [default: `now()`] // Ngày cập nhật cuối
-}
-
-Table payment {
-  id int [pk, increment] // Mã định danh thanh toán
-  contract_id int [ref: > contract.id] // Liên kết tới hợp đồng
-  payment_date date [null] // Ngày thanh toán (ngày cụ thể)
-  payment_days_offset int [null] // Số ngày kể từ ngày bắt đầu campaign hoặc yêu cầu
-  payment_type enum("input", "output") [not null] // Loại thanh toán: input (đầu vào) hoặc output (đầu ra)
-  amount decimal(15,2) [not null] // Số tiền thanh toán
-  created_at timestamp [default: `now()`] // Ngày tạo thanh toán
-  updated_at timestamp [default: `now()`] // Ngày cập nhật cuối
-}
-
-Table cashflow {
-  id int [pk, increment] // Mã định danh dòng tiền
-  campaign_id int [ref: > campaign.id] // Liên kết tới campaign
-  week_start date // Ngày bắt đầu tuần
-  week_end date // Ngày kết thúc tuần
-  inflow decimal(15,2) // Dòng tiền vào (total inflow for the week)
-  outflow decimal(15,2) // Dòng tiền ra (total outflow for the week)
-  pnl decimal(15,2) // Lợi nhuận và lỗ (PnL) cho tuần
-  created_at timestamp [default: `now()`] // Ngày tạo
-  updated_at timestamp [default: `now()`] // Ngày cập nhật cuối
-}
-`;
-
-        // Encode DBML code
-        const encodedDBML = encodeURIComponent(dbmlCode);
-
-        // URL to Kroki API for DBML visualization
-        const krokiUrl = `https://kroki.io/dbml/svg/${encodedDBML}`;
-
-        // Set image source to Kroki URL
-        document.getElementById('dbml-diagram').src = krokiUrl;
+        // Fetch the DBML file
+        fetch(dbmlFileUrl)
+            .then(response => response.text())
+            .then(dbmlCode => {
+                // Encode DBML code
+                const encodedDBML = encodeURIComponent(dbmlCode);
+                // URL to Kroki API for DBML visualization
+                const krokiUrl = `https://kroki.io/dbml/svg/${encodedDBML}`;
+                // Set image source to Kroki URL
+                document.getElementById('dbml-diagram').src = krokiUrl;
+            })
+            .catch(error => {
+                console.error('Error fetching DBML file:', error);
+            });
     </script>
 </body>
 
