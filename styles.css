@@ -22,6 +22,7 @@ body {
 
 #file-list li {
     margin-bottom: 10px;
+    display: block; /* Ensure each list item is block-level */
 }
 
 #file-list a {
