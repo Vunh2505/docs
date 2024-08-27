@@ -18,6 +18,7 @@ body {
 #file-list {
     list-style-type: none;
     padding: 0;
+    font-size: 12px;
 }
 
 #file-list li {
