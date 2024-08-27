@@ -18,13 +18,14 @@ body {
 #file-list {
     list-style-type: none;
     padding: 0;
-    font-size: 12px;
+    
 }
 
 #file-list li {
     margin-bottom: 10px;
     display: block;
     width: 100%; /* Ensure full width */
+    font-size: 12px;
 }
 
 #file-list .collapsible {
