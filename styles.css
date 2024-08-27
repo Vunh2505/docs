@@ -15,7 +15,6 @@ body {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-
 #file-list {
     list-style-type: none;
     padding: 0;
@@ -24,7 +23,6 @@ body {
 #file-list li {
     margin-bottom: 10px;
     display: block;
-    cursor: pointer; /* Indicate that the item is clickable */
 }
 
 #file-list .collapsible {
@@ -36,7 +34,9 @@ body {
     border: none;
     text-align: left;
     outline: none;
-    width: 100%;
+    width: 100%; /* Ensure full width */
+    box-sizing: border-box; /* Include padding and border in the element's width and height */
+    white-space: normal; /* Allow text to wrap within the button */
 }
 
 #file-list .content {
@@ -53,8 +53,11 @@ body {
     text-decoration: none;
     color: #cfd8dc;
     display: block;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 3px;
+    margin-bottom: 5px;
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words if necessary */
 }
 
 #file-list a:hover {
