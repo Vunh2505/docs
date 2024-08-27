@@ -15,6 +15,7 @@ body {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
+
 #file-list {
     list-style-type: none;
     padding: 0;
@@ -22,7 +23,30 @@ body {
 
 #file-list li {
     margin-bottom: 10px;
-    display: block; /* Ensure each list item is block-level */
+    display: block;
+    cursor: pointer; /* Indicate that the item is clickable */
+}
+
+#file-list .collapsible {
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: none;
+    text-align: left;
+    outline: none;
+    width: 100%;
+}
+
+#file-list .content {
+    display: none;
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+#file-list .active .content {
+    display: block;
 }
 
 #file-list a {
@@ -37,6 +61,7 @@ body {
     background-color: #495057;
     color: #ffffff;
 }
+
 
 #content {
     flex: 1;
