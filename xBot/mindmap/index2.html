@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.0/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.0/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.0/dist/index.js"></script><script>(r => {
+                setTimeout(r);
+              })(() => {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root2, jsonOptions) => {
+              const markmap = getMarkmap();
+              window.mm = markmap.Markmap.create(
+                "svg#mindmap",
+                (getOptions || markmap.deriveOptions)(jsonOptions),
+                root2
+              );
+            })(() => window.markmap,null,{"content":"","children":[{"content":"1. <strong>Hỗ trợ thông tin tài khoản</strong>","children":[{"content":"Tra cứu số dư tài khoản, giao dịch gần nhất.","children":[],"payload":{"lines":"1,2"}},{"content":"Cung cấp thông tin về số tài khoản, số thẻ.","children":[],"payload":{"lines":"2,3"}},{"content":"Thay đổi mật khẩu truy cập tài khoản trực tuyến.","children":[],"payload":{"lines":"3,4"}},{"content":"Hỗ trợ đăng nhập và giải đáp vấn đề về ứng dụng ngân hàng điện tử.","children":[],"payload":{"lines":"4,6"}}],"payload":{"lines":"0,1"}},{"content":"2. <strong>Hỗ trợ thẻ</strong>","children":[{"content":"Kích hoạt thẻ mới (thẻ ghi nợ, thẻ tín dụng).","children":[],"payload":{"lines":"7,8"}},{"content":"Khoá/mở khóa thẻ khi bị mất hoặc bị đánh cắp.","children":[],"payload":{"lines":"8,9"}},{"content":"Hỗ trợ đổi mã PIN.","children":[],"payload":{"lines":"9,10"}},{"content":"Cập nhật địa chỉ nhận thẻ.","children":[],"payload":{"lines":"10,11"}},{"content":"Cung cấp thông tin về hạn mức thẻ và lịch sử giao dịch thẻ.","children":[],"payload":{"lines":"11,12"}},{"content":"Hướng dẫn nộp tiền vào thẻ tín dụng và xử lý khi bị tính phí.","children":[],"payload":{"lines":"12,14"}}],"payload":{"lines":"6,7"}},{"content":"3. <strong>Hỗ trợ dịch vụ chuyển tiền</strong>","children":[{"content":"Hướng dẫn thực hiện chuyển tiền trong và ngoài hệ thống.","children":[],"payload":{"lines":"15,16"}},{"content":"Xác nhận trạng thái giao dịch chuyển tiền.","children":[],"payload":{"lines":"16,17"}},{"content":"Giải quyết các vấn đề liên quan đến chuyển tiền sai tài khoản, sai thông tin.","children":[],"payload":{"lines":"17,18"}},{"content":"Cung cấp thông tin về phí dịch vụ chuyển tiền.","children":[],"payload":{"lines":"18,20"}}],"payload":{"lines":"14,15"}},{"content":"4. <strong>Vấn đề liên quan đến tiết kiệm và đầu tư</strong>","children":[{"content":"Cung cấp thông tin về lãi suất tiết kiệm.","children":[],"payload":{"lines":"21,22"}},{"content":"Hỗ trợ mở tài khoản tiết kiệm trực tuyến.","children":[],"payload":{"lines":"22,23"}},{"content":"Cung cấp thông tin về các sản phẩm đầu tư (chứng khoán, trái phiếu, quỹ).","children":[],"payload":{"lines":"23,24"}},{"content":"Giải đáp thắc mắc về lịch sử giao dịch, đáo hạn.","children":[],"payload":{"lines":"24,26"}}],"payload":{"lines":"20,21"}},{"content":"5. <strong>Hỗ trợ vay vốn và tín dụng</strong>","children":[{"content":"Cung cấp thông tin về các gói vay cá nhân, vay mua nhà, vay mua xe.","children":[],"payload":{"lines":"27,28"}},{"content":"Hướng dẫn quy trình đăng ký vay vốn.","children":[],"payload":{"lines":"28,29"}},{"content":"Cập nhật thông tin về trạng thái hồ sơ vay.","children":[],"payload":{"lines":"29,30"}},{"content":"Cung cấp lịch thanh toán nợ và hỗ trợ tính lãi suất.","children":[],"payload":{"lines":"30,32"}}],"payload":{"lines":"26,27"}},{"content":"6. <strong>Hỗ trợ liên quan đến dịch vụ ngân hàng điện tử</strong>","children":[{"content":"Hướng dẫn sử dụng internet banking và mobile banking.","children":[],"payload":{"lines":"33,34"}},{"content":"Giải quyết vấn đề đăng nhập, đăng ký mới.","children":[],"payload":{"lines":"34,35"}},{"content":"Hỗ trợ xác thực hai yếu tố (2FA) và các vấn đề bảo mật khác.","children":[],"payload":{"lines":"35,36"}},{"content":"Cung cấp thông tin về các dịch vụ mới trên ứng dụng ngân hàng.","children":[],"payload":{"lines":"36,38"}}],"payload":{"lines":"32,33"}},{"content":"7. <strong>Quản lý khiếu nại và giải quyết vấn đề</strong>","children":[{"content":"Tiếp nhận và xử lý khiếu nại liên quan đến dịch vụ ngân hàng.","children":[],"payload":{"lines":"39,40"}},{"content":"Hỗ trợ giải quyết vấn đề tài chính cá nhân (lừa đảo, mất cắp thông tin).","children":[],"payload":{"lines":"40,41"}},{"content":"Giải quyết các tranh chấp liên quan đến giao dịch, dịch vụ.","children":[],"payload":{"lines":"41,43"}}],"payload":{"lines":"38,39"}},{"content":"8. <strong>Hỗ trợ dịch vụ đặc biệt và khách hàng ưu tiên</strong>","children":[{"content":"Cung cấp thông tin về các đặc quyền, dịch vụ cho khách hàng ưu tiên.","children":[],"payload":{"lines":"44,45"}},{"content":"Đặt lịch hẹn tại chi nhánh, đặt dịch vụ tư vấn tài chính cá nhân.","children":[],"payload":{"lines":"45,46"}},{"content":"Hỗ trợ liên quan đến các sản phẩm cao cấp (thẻ Platinum, thẻ Infinite).","children":[],"payload":{"lines":"46,48"}}],"payload":{"lines":"43,44"}},{"content":"9. <strong>Cung cấp thông tin về sản phẩm và chương trình khuyến mãi</strong>","children":[{"content":"Giới thiệu các sản phẩm và dịch vụ mới của ngân hàng.","children":[],"payload":{"lines":"49,50"}},{"content":"Cung cấp thông tin về các chương trình khuyến mãi, ưu đãi đặc biệt.","children":[],"payload":{"lines":"50,51"}},{"content":"Hỗ trợ khách hàng đăng ký tham gia chương trình khuyến mãi.","children":[],"payload":{"lines":"51,53"}}],"payload":{"lines":"48,49"}},{"content":"10. <strong>Hỗ trợ dịch vụ thanh toán hóa đơn</strong>","children":[{"content":"Hướng dẫn thanh toán hóa đơn điện, nước, internet, và các dịch vụ khác qua ngân hàng.","children":[],"payload":{"lines":"54,55"}},{"content":"Xử lý vấn đề liên quan đến giao dịch thanh toán hóa đơn.","children":[],"payload":{"lines":"55,57"}}],"payload":{"lines":"53,54"}},{"content":"11. <strong>Hỗ trợ mở tài khoản và dịch vụ thanh toán quốc tế</strong>","children":[{"content":"Hướng dẫn mở tài khoản thanh toán hoặc tài khoản ngoại tệ.","children":[],"payload":{"lines":"58,59"}},{"content":"Cung cấp thông tin về tỷ giá ngoại tệ, chuyển tiền quốc tế, Swift Code.","children":[],"payload":{"lines":"59,60"}},{"content":"Hỗ trợ các giao dịch quốc tế như thanh toán, nhận tiền từ nước ngoài.","children":[],"payload":{"lines":"60,62"}}],"payload":{"lines":"57,58"}},{"content":"12. <strong>Các dịch vụ khác</strong>","children":[{"content":"Hỗ trợ tra cứu thông tin chi nhánh, ATM.","children":[],"payload":{"lines":"63,64"}},{"content":"Cung cấp thông tin liên quan đến chính sách bảo hiểm qua ngân hàng (bancassurance).","children":[],"payload":{"lines":"64,65"}},{"content":"Hỗ trợ khách hàng sử dụng dịch vụ ngân hàng tự động (máy CDM).","children":[],"payload":{"lines":"65,66"}}],"payload":{"lines":"62,63"}}]},{})</script>
+</body>
+</html>
