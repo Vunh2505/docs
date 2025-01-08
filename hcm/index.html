@@ -32,20 +32,8 @@
         },
         crossChapter: true,
         crossChapterText: true,
-      },
-      auth: {
-        enable: true, // Bật tính năng bảo mật
-        use: "sha256", // Thuật toán mã hóa mật khẩu (sha256 hoặc md5)
-        password: "2e3ecdf21b35905eba80e31819ffef6e7ee51cc4cf1773127ccdc8b092a6c51e", // Mật khẩu mã hóa
-        title: "Enter password to access the document:", // Tiêu đề của hộp thoại xác thực
-        paths: ["^/concepts"], // Các đường dẫn cần bảo mật, hỗ trợ regex
-        labels: { // Các label đa ngôn ngữ
-          title: "Enter password to access the document:", // Tiêu đề
-          placeholder: "Password", // Nơi nhập mật khẩu
-          submit: "Submit", // Nút gửi
-          error: "Incorrect password, access denied." // Thông báo lỗi
-        }
-      }    
+      }
+      
     };
     
   </script>
@@ -57,7 +45,6 @@
 <script src="https://cdn.jsdelivr.net/npm/docsify-breadcrumb@latest/dist/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.15.2"></script>
 <script src="https://cdn.jsdelivr.net/npm/docsify-markmap.js@1.0.0/docsify-markmap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
-<script src="./plugins/auth.js"></script>
+
 </body>
 </html>
