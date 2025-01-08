@@ -13,10 +13,25 @@
   <script>
     window.$docsify = {
       name: '',
-      repo: ''
+      repo: '',
+      loadSidebar: true,
+      // Cấu hình auth
+      auth: {
+        hashedPassword: '2e3ecdf21b35905eba80e31819ffef6e7ee51cc4cf1773127ccdc8b092a6c51e', // Thay chuỗi hash
+        hashingAlgorithm: 'sha256',
+        protectRoutes: ['/protected/'], // Chặn folder /protected/
+        title: 'Yêu cầu mật khẩu',
+        description: 'Folder /protected/ đang được bảo vệ!',
+        placeholder: 'Nhập mật khẩu...',
+        buttonText: 'OK',
+        errorText: 'Sai mật khẩu!',
+        successText: 'Đúng rồi, load nội dung...'
+      }
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <!-- 2) Thư viện sha256 -->
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
 </body>
 </html>
