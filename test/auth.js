@@ -28,6 +28,11 @@
   // ===============================
   function DocsifyAuthPlugin(hook, vm) {
     // Hook này được gọi trước khi Docsify parse & render nội dung
+    hook.init(function() {
+      console.log('vm.config =', vm.config);
+      console.log('vm.config.auth =', vm.config && vm.config.auth);
+    });
+
     hook.beforeEach(function (content) {
       try {
         // Lấy config auth
