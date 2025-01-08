@@ -46,7 +46,8 @@
           errorMessage: "Incorrect password, access denied." // Thông báo lỗi
         }
       }    
-    }
+    };
+    window.$docsify.plugins = [].concat(window.authPlugin.install);
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
