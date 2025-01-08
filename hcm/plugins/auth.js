@@ -1,12 +1,5 @@
-// Enhanced version of docsify-auth plugin
-// import md5 from 'md5';
-
 function validatePassword(inputPassword, encryptedPassword) {
-   
-    let inputPasswordHash = sha256(inputPassword);
-  //  if (window.$docsify.auth.use === "md5") {
-  //      inputPasswordHash = md5(inputPassword);
-  //  }
+    const inputPasswordHash = sha256(inputPassword);
     return inputPasswordHash === encryptedPassword;
 }
 
@@ -33,10 +26,9 @@ function injectStyle() {
         padding: 10px 20px;
         font-size: 16px;
       }
-      #auth-dialog .error-message {
+      #auth-dialog error-message {
         color: red;
         margin-top: 10px;
-        display: none;
       }
     `;
     document.head.insertBefore(styleEl, document.querySelector("head style, head link[rel*='stylesheet']"));
@@ -44,75 +36,78 @@ function injectStyle() {
 
 function injectAuthDialog() {
     let auth = window.$docsify.auth;
-    let labels = auth.labels || {
-        title: "Please enter the password to access this document:",
-        placeholder: "Password",
-        submit: "Submit",
-        error: "Incorrect password, access denied."
-    };
-
     let divEl = document.createElement('div');
     divEl.id = "auth-dialog";
     divEl.style.display = "none";
     divEl.innerHTML = `
-        <span style="font-size:22px;font-weight:bold;">${labels.title}</span>
-        <input type="password" id="auth-pwd" placeholder="${labels.placeholder}">
-        <button id="auth-submit">${labels.submit}</button>
-        <p id="error-message" class="error-message">${labels.error}</p>
+        <span style="font-size:22px;font-weight:bold;">${auth.title}</span>
+        <input type="password" id="auth-pwd" placeholder="Password">
+        <button onclick="checkPassword()">Submit</button>
+        <p id="error-message" style="color: red; display: none;">Incorrect password. Access denied.</p>
     `;
-    document.body.appendChild(divEl);
-
-    document.getElementById('auth-submit').addEventListener('click', checkPassword);
+    document.getElementsByTagName("body")[0].appendChild(divEl);
 }
 
 function setAuthDialog(isShow) {
-    const dialog = document.getElementById('auth-dialog');
     if (isShow) {
-        dialog.style.display = 'flex';
-        document.querySelector('main').style.display = 'none';
-        document.querySelector('nav').style.display = 'none';
+        document.getElementById('auth-dialog').style.display = 'flex';
+        if (document.getElementsByClassName('github-corner')[0]) {
+            document.getElementsByClassName('github-corner')[0].style.display='none';
+        }
+        document.getElementsByTagName('main')[0].style.display='none';
+        document.getElementsByTagName('nav')[0].style.display='none';
     } else {
-        dialog.style.display = 'none';
-        document.querySelector('main').style.display = 'block';
-        document.querySelector('nav').style.display = 'block';
+        document.getElementById('auth-dialog').style.display = 'none';
+        if (document.getElementsByClassName('github-corner')[0]) {
+            document.getElementsByClassName('github-corner')[0].style.display='block';
+        }
+        document.getElementsByTagName('main')[0].style.display='block';
+        document.getElementsByTagName('nav')[0].style.display='block';
     }
 }
 
-function checkPassword() {
-    let pwd = document.getElementById("auth-pwd").value;
-    let auth = window.$docsify.auth;
-
-    if (validatePassword(pwd, auth.password)) {
-        sessionStorage.setItem('authenticated', 'true');
-        setAuthDialog(false);
-    } else {
-        document.getElementById('error-message').style.display = 'block';
-    }
-}
-
-export function install(hook, vm) {
+function install(hook, vm) {
     hook.init(function() {
         injectStyle();
         injectAuthDialog();
     });
 
     hook.beforeEach(function(content) {
-        let auth = window.$docsify.auth;
         let rm = window.$docsify.routeMode;
-        let currentPath = window.location.hash.split('?')[0].split('#')[1] || '/';
-
+        var currentPath = window.location.hash.split('?')[0].split('#')[1] || '/';
         if (rm === "history") {
             currentPath = window.location.hash.split('?')[0].split('#')[0] || '/';
         }
+        console.info("currentPath:" + currentPath);
+        var needAuth = null;
+        let auth = window.$docsify.auth;
+        let paths = auth.paths;
 
-        let needAuth = auth.paths.some(path => new RegExp(path).test(currentPath));
+        for (var i = 0; i < paths.length; i++) {
+            if (new RegExp(paths[i]).test(currentPath)) {
+                needAuth = true;
+                break;
+            }
+        }
 
         if (auth.enable && needAuth && !sessionStorage.getItem('authenticated')) {
             setAuthDialog(true);
-            return '<div style="color:red;">Please refresh the page after successful authentication to view the content.</div>';
+            window.checkPassword = function() {
+                let pwd = document.getElementById("auth-pwd").value;
+                if (validatePassword(pwd, window.$docsify.auth.password)) {
+                    sessionStorage.setItem('authenticated', 'true');
+                    setAuthDialog(false);
+                } else {
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            }
+            return '<div style="color:red;">Authentication successful. Please refresh the page to view content!</div>';
         } else {
             setAuthDialog(false);
             return content;
         }
     });
 }
+
+// Attach the `install` function globally
+window.authPlugin = { install };
