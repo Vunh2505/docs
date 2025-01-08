@@ -41,13 +41,13 @@
         paths: ["^/concepts"], // Các đường dẫn cần bảo mật, hỗ trợ regex
         labels: { // Các label đa ngôn ngữ
           title: "Enter password to access the document:", // Tiêu đề
-          inputPlaceholder: "Password", // Nơi nhập mật khẩu
-          submitButton: "Submit", // Nút gửi
-          errorMessage: "Incorrect password, access denied." // Thông báo lỗi
+          placeholder: "Password", // Nơi nhập mật khẩu
+          submit: "Submit", // Nút gửi
+          error: "Incorrect password, access denied." // Thông báo lỗi
         }
       }    
     };
-    window.$docsify.plugins = [].concat(window.authPlugin.install);
+    
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
