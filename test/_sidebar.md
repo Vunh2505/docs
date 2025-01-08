@@ -1,3 +1,5 @@
 - [Home](/)
 - Concepts
-  - [HrCore](/concepts/HrCore.md)
+  - [Concepts](/concepts/README.md)
+- Architecture
+  - [Architecture](/architecture/README.md)
