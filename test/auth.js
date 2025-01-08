@@ -57,8 +57,8 @@
         // 2) Kiểm tra route hiện tại có cần protect không
         // vm.route.path => ví dụ "/protected/page1"
         const currentRoute = vm.route.path || '/';
-        consol.log('current route=',currentRoute);
-        consol.log('protect route=',protectRoutes);
+        console.log('current route=',currentRoute);
+        console.log('protect route=',protectRoutes);
         const needProtect = isProtectedRoute(currentRoute, protectRoutes);
         if (!needProtect) {
           // Route không nằm trong danh sách protect => không cần auth
