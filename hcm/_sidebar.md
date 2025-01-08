@@ -1,12 +1,12 @@
 - [Home](/)
 - Concepts
+  - [Module Organisation](/concepts/org.md)
   - [HrCore](/concepts/HrCore.md)
   - [time&attendance](/concepts/time&attendance.md)
   - [payroll](/concepts/payroll.md)
   - [totalreward](/concepts/totalreward.md)
   - [ess](/concepts/ess.md)
   - [recruitment](/concepts/recruitment.md)
-  - [Org](/concepts/organisation-concept.md)
 - Architecture
   - [HrCore](/architecture/HrCore.md)
   - [time&attendance](/architecture/time&attendance.md)
