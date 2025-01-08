@@ -1,11 +1,12 @@
 // Enhanced version of docsify-auth plugin
-import md5 from 'md5';
+// import md5 from 'md5';
 
 function validatePassword(inputPassword, encryptedPassword) {
+   
     let inputPasswordHash = sha256(inputPassword);
-    if (window.$docsify.auth.use === "md5") {
-        inputPasswordHash = md5(inputPassword);
-    }
+  //  if (window.$docsify.auth.use === "md5") {
+  //      inputPasswordHash = md5(inputPassword);
+  //  }
     return inputPasswordHash === encryptedPassword;
 }
 
