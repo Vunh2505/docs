@@ -94,6 +94,11 @@
       // Chặn Docsify hiển thị nội dung cho tới khi user xác thực
       await checkAuth();
 
+      // Đảm bảo luôn trả về string để Docsify parse
+      if (typeof content !== 'string') {
+        return ''; 
+      }
+      
       // Sau khi xác thực xong, trả về nội dung gốc => docsify render
       return content;
 
