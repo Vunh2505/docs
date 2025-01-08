@@ -1,0 +1,3 @@
+- [Home](/)
+- Concepts
+  - [HrCore](/concepts/HrCore.md)
