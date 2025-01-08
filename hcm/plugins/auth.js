@@ -68,6 +68,17 @@ function injectAuthDialog() {
 
 function setAuthDialog(isShow) {
     const dialog = document.getElementById("auth-dialog");
+
+    // Check if the dialog element exists
+    if (!dialog) {
+        console.error("Auth dialog not found.");
+        return;
+    }
+
+    // Check if the main and nav elements exist
+    const main = document.querySelector("main");
+    const nav = document.querySelector("nav");
+    
     if (isShow) {
         dialog.style.display = "flex";
         document.querySelector("main").style.display = "none";
@@ -93,11 +104,11 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook) => {
         const needAuth = auth.paths.some((path) => new RegExp(path).test(currentPath));
 
         if (auth.enable && needAuth && !sessionStorage.getItem("authenticated")) {
-            setAuthDialog(true);
+            document.addEventListener("DOMContentLoaded", () => setAuthDialog(true));
             return '<div style="color:red;">Please refresh the page after successful authentication to view the content.</div>';
         }
 
-        setAuthDialog(false);
+        document.addEventListener("DOMContentLoaded", () => setAuthDialog(false));
         return content;
     });
 });
