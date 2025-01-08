@@ -40,6 +40,7 @@
         // Lấy sha256 của "123456" = "8d969eef6ecad3c29a3a629280e686cf" (thực tế là md5, bạn nên thay!)
         hashedPassword: "2e3ecdf21b35905eba80e31819ffef6e7ee51cc4cf1773127ccdc8b092a6c51e", 
         hashingAlgorithm: "sha256", // "md5" hay "sha256"
+        protectRoutes: ['/concepts/'],
         title: "Bảo vệ tài liệu",
         description: "Vui lòng nhập mật khẩu để truy cập.",
         placeholder: "Nhập mật khẩu...",
@@ -50,13 +51,14 @@
     }
   </script>
   <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="./auth.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  // <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  // <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <!-- Adds the breadcrumb JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/docsify-breadcrumb@latest/dist/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.15.2"></script>
-<script src="https://cdn.jsdelivr.net/npm/docsify-markmap.js@1.0.0/docsify-markmap.min.js"></script>
+// <script src="https://cdn.jsdelivr.net/npm/docsify-breadcrumb@latest/dist/index.min.js"></script>
+// <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.15.2"></script>
+// <script src="https://cdn.jsdelivr.net/npm/docsify-markmap.js@1.0.0/docsify-markmap.min.js"></script>
 </body>
 </html>
