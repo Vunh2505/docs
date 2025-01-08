@@ -32,11 +32,26 @@
         },
         crossChapter: true,
         crossChapterText: true,
+      },
+      auth: {
+        // "băm sha256" của mật khẩu "123456"
+        // Có thể dùng tool online để băm sha256 => "8d969eef6ecad3c29a3a629280e686cf"
+        // (Đây thực tế là md5 sample, chỉ để ví dụ. Bạn cần thay bằng sha256!)
+        // Lấy sha256 của "123456" = "8d969eef6ecad3c29a3a629280e686cf" (thực tế là md5, bạn nên thay!)
+        hashedPassword: "2e3ecdf21b35905eba80e31819ffef6e7ee51cc4cf1773127ccdc8b092a6c51e", 
+        hashingAlgorithm: "sha256", // "md5" hay "sha256"
+        title: "Bảo vệ tài liệu",
+        description: "Vui lòng nhập mật khẩu để truy cập.",
+        placeholder: "Nhập mật khẩu...",
+        buttonText: "Xác nhận",
+        errorText: "Mật khẩu không đúng!",
+        successText: "Xác thực thành công, đang tải nội dung..."
       }
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="./auth.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <!-- Adds the breadcrumb JavaScript -->
