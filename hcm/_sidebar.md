@@ -1,5 +1,3 @@
-<!-- docs/_sidebar.md -->
-
 - [Home](/)
 - Concepts
   - [HrCore](/concepts/HrCore.md)
