@@ -2,14 +2,6 @@
   // ===============================
   //    HÀM BĂM MẬT KHẨU BẰNG js-sha256
   // ===============================
-
-  /**
-   * Băm message theo thuật toán (hiện tại chỉ hỗ trợ sha256).
-   * Muốn hỗ trợ md5 hay các hàm khác, bạn có thể bổ sung.
-   * @param {String} message - mật khẩu người dùng nhập
-   * @param {String} algorithm - ví dụ 'sha256'
-   * @returns {String} - chuỗi hash hex
-   */
   function hashPassword(message, algorithm) {
     if (!window.sha256) {
       throw new Error('js-sha256 library not loaded. Hãy import https://cdn.jsdelivr.net/npm/js-sha256 trước plugin này.');
@@ -17,9 +9,7 @@
     switch (algorithm) {
       case 'sha256':
       default:
-        // Dùng hàm sha256(...) từ file sha256.min.js
-        // Trả về chuỗi hex (viết thường) 64 ký tự.
-        return window.sha256(message);
+        return window.sha256(message); // Chuỗi hex 64 ký tự
     }
   }
 
@@ -27,7 +17,6 @@
   //    PLUGIN CHÍNH
   // ===============================
   function DocsifyAuthPlugin(hook, vm) {
-    // Hook này được gọi trước khi Docsify parse & render nội dung
     hook.init(function() {
       console.log('vm.config =', vm.config);
       console.log('vm.config.auth =', vm.config && vm.config.auth);
@@ -40,7 +29,7 @@
         const {
           hashedPassword = '',
           hashingAlgorithm = 'sha256',
-          protectRoutes = [], // Mảng route/folder cần bảo vệ
+          protectRoutes = [],
           title = 'Authentication Required',
           description = 'Please enter password to continue',
           placeholder = 'Password...',
@@ -49,23 +38,21 @@
           successText = 'Login success, loading docs...'
         } = config;
 
-        // 1) Nếu không cấu hình hashedPassword -> Bỏ qua plugin
+        // (1) Nếu không có hashedPassword => bỏ qua
         if (!hashedPassword) {
           return content;
         }
 
-        // 2) Kiểm tra route hiện tại có cần protect không
-        // vm.route.path => ví dụ "/protected/page1"
+        // (2) Kiểm tra route
         const currentRoute = vm.route.path || '/';
-        console.log('current route=',currentRoute);
-        console.log('protect route=',protectRoutes);
+        console.log('current route=', currentRoute);
+        console.log('protect route=', protectRoutes);
         const needProtect = isProtectedRoute(currentRoute, protectRoutes);
         if (!needProtect) {
-          // Route không nằm trong danh sách protect => không cần auth
           return ensureString(content);
         }
 
-        // 3) Tạo container auth nếu chưa có
+        // (3) Tạo form auth nếu chưa có
         if (!document.querySelector('.docsify-auth-container')) {
           createAuthContainer({
             hashedPassword,
@@ -79,37 +66,30 @@
           });
         }
 
-        // 4) Check localStorage => nếu chưa auth => chặn hiển thị
+        // (4) Chưa auth => chặn nội dung
         const isAuthed = window.localStorage.getItem('docsify-auth');
         if (isAuthed !== 'true') {
-          // Người dùng chưa nhập pass => Hiển thị form, Docsify parse nội dung (nhưng ẩn!)
-          // => ta có thể return '' để Docsify không parse markdown cũ
-          // hoặc return 1 câu "Đang chờ xác thực..." tuỳ ý.
           return '';
         }
 
-        // 5) Đã auth => ẩn form => trả về content
+        // (5) Đã auth => ẩn form => cho hiển thị content
         hideAuthContainer();
         return ensureString(content);
 
       } catch (err) {
         console.error('DocsifyAuthPlugin error:', err);
-        // Để tránh Docsify bị crash, ta trả về string rỗng
+        // Tránh Docsify crash => trả về chuỗi rỗng
         return '';
       }
     });
 
     // ===============================
-    //    Hàm phụ
+    //    HÀM PHỤ & TẠO OVERLAY
     // ===============================
     function isProtectedRoute(route, protectList) {
       if (!Array.isArray(protectList) || protectList.length === 0) {
-        // Nếu protectRoutes rỗng => coi như không chặn route nào
         return false;
       }
-      // Kiểm tra từng phần tử trong protectRoutes
-      // route.startsWith(folderPattern)
-      // Example: route = "/protected/page1", folderPattern = "/protected/"
       return protectList.some(folder => route.startsWith(folder));
     }
 
@@ -117,9 +97,9 @@
       return (typeof val === 'string') ? val : '';
     }
 
-    // ===============================
-    //    Tạo container form auth
-    // ===============================
+    /**
+     * Tạo form auth, nhưng chỉ overlay khu vực .content
+     */
     function createAuthContainer({
       hashedPassword,
       hashingAlgorithm,
@@ -130,17 +110,32 @@
       errorText,
       successText
     }) {
+      // Tìm element .content
+      let contentEl = document.querySelector('.content');
+      if (!contentEl) {
+        // Nếu Docsify chưa render .content, fallback sang body
+        contentEl = document.body;
+      } else {
+        // Đảm bảo .content có position khác "static"
+        const currentPos = window.getComputedStyle(contentEl).position;
+        if (currentPos === 'static') {
+          contentEl.style.position = 'relative';
+        }
+      }
+
+      // Tạo container overlay
       const container = document.createElement('div');
       container.className = 'docsify-auth-container';
       container.style.cssText = `
-        position: fixed;
-        inset: 0;
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 9999;
+        background: #f5f5f5;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: #f5f5f5;
-        z-index: 9999;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
       `;
 
       // Title
@@ -171,32 +166,24 @@
       errorDiv.style.cssText = 'color: red; margin-top: 8px; min-height: 1em;';
       container.appendChild(errorDiv);
 
-      // Sự kiện click
+      // Sự kiện button
       btn.addEventListener('click', () => {
         const userInput = input.value.trim();
-        if (!userInput) {
-          return;
-        }
+        if (!userInput) return;
+
         try {
-          // Băm input
           const hashedInput = hashPassword(userInput, hashingAlgorithm);
           if (hashedInput.toLowerCase() === hashedPassword.toLowerCase()) {
             // Đúng mật khẩu
             errorDiv.style.color = 'green';
             errorDiv.innerText = successText;
-            // Lưu localStorage
             window.localStorage.setItem('docsify-auth', 'true');
-
             setTimeout(() => {
               container.style.display = 'none';
-              // Docsify sẽ parse lại route => hiển thị markdown
-              // Ta có thể trigger Docsify reload route:
-              // window.$docsify.route = vm.route.path;
-              // window.location.reload(); 
-              // *TUỲ* logic, cẩn thận reload nhiều lần => loop.
             }, 500);
 
           } else {
+            // Sai
             errorDiv.style.color = 'red';
             errorDiv.innerText = errorText;
           }
@@ -207,7 +194,8 @@
         }
       });
 
-      document.body.appendChild(container);
+      // Gắn vào .content (hoặc body)
+      contentEl.appendChild(container);
     }
 
     function hideAuthContainer() {
