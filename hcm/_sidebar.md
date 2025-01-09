@@ -1,5 +1,3 @@
-# A4B HCM Documentation
-
 - [Home](/)
 - Concepts
   - [Organisation](/concepts/org.md)

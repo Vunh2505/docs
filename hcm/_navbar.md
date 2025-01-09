@@ -1,11 +1,11 @@
 <!-- Logo -->
-[![](https://docsify.js.org/_media/icon.svg)](/)
+[![]()](/)
 
 <!-- Title -->
-docsify
+HCM
 
 <!-- Badge -->
-[![GitHub Repo stars](https://img.shields.io/github/stars/docsifyjs/docsify ':class=badge')](https://github.com/docsifyjs/docsify/)
+
 
 - Translations
   - [:uk: English](/)

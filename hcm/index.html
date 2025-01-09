@@ -26,7 +26,7 @@
 
   <script>
     window.$docsify = {
-      name: '',
+      name: 'HCM Reference Hub',
       repo: '',
       coverpage: false,
       loadSidebar: true,
@@ -63,6 +63,13 @@
         errorText: 'Sai mật khẩu!',
         successText: 'Đúng rồi, load nội dung...'
       },
+      search: {
+        maxAge: 86400000, // Cache expiration time in milliseconds (optional, default: 24 hours)
+        placeholder: 'Search...', // Placeholder text for the search box
+        noData: 'No results found!', // Text to display if no results are found
+        paths: 'auto', // Automatically include all Markdown files in the project (default: auto)
+        depth: 2 // Maximum header depth for searching (optional, default: 2)
+      },
       loadFooter: true
     };
     
@@ -80,5 +87,6 @@
 <!-- use the footer plugin latest version -->
 <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>
