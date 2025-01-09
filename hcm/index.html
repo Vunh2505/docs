@@ -12,6 +12,12 @@
 </head>
 <body>
   <div id="app"></div>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
+  <!-- 4) Plugin Auth -->
+  <script src="plugins/auth.js"></script>
+
   <script>
     window.$docsify = {
       name: '',
@@ -23,15 +29,12 @@
       subMaxLevel: 3,
       pagination: {
         previousText: {
-          '/en/': 'NEXT',
           '/': 'Trước'
         },
         nextText: {
-          '/en/': 'NEXT',
           '/': 'Sau'
         },
-        crossChapter: true,
-        crossChapterText: true,
+        crossChapter: true
       },
       auth: {
         hashedPassword: '2e3ecdf21b35905eba80e31819ffef6e7ee51cc4cf1773127ccdc8b092a6c51e', // Thay chuỗi hash
@@ -48,11 +51,6 @@
     };
     
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
-  <!-- 4) Plugin Auth -->
-  <script src="plugins/auth.js"></script>
   <!-- Collapse side bar plugin -->
   <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <!-- Pagination plugin -->
