@@ -1,6 +1,4 @@
-Dưới đây là phần giải thích về mặt **nghiệp vụ (business)** cho các mô hình ca kíp và lịch làm việc “đặc thù” thường gặp trong các tổ chức, doanh nghiệp. Các nội dung chỉ tập trung vào ý nghĩa, phạm vi áp dụng, và cách triển khai mang tính thực tiễn, **không đề cập đến bất kỳ giải pháp phần mềm** cụ thể nào.
-
----
+# Các trường hơp phân ca đặc thù
 
 ## 1. Mô hình “3 ca 4 kíp” và luân chuyển theo tuần  
 **Bối cảnh áp dụng:**  

@@ -1,4 +1,6 @@
-Trong Oracle HCM Cloud, việc quản lý “earnings and deductions” (thu nhập và khấu trừ) gắn liền với phân hệ **Oracle Payroll** (thông thường là Oracle Global Payroll). Còn việc thiết kế, quản lý tổng thể “total reward” (bao gồm lương, thưởng, phúc lợi, cổ phần, v.v.) chủ yếu nằm trong phân hệ **Oracle Compensation**.
+# Oracle Compensation
+
+> Trong Oracle HCM Cloud, việc quản lý “earnings and deductions” (thu nhập và khấu trừ) gắn liền với phân hệ **Oracle Payroll** (thông thường là Oracle Global Payroll). Còn việc thiết kế, quản lý tổng thể “total reward” (bao gồm lương, thưởng, phúc lợi, cổ phần, v.v.) chủ yếu nằm trong phân hệ **Oracle Compensation**.
 
 Cụ thể:
 

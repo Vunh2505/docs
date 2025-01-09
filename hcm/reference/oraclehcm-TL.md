@@ -1,4 +1,6 @@
-Dưới đây là phần giải thích chi tiết về Oracle HCM Time and Labor cũng như vai trò của các khái niệm chính trong quá trình cấu hình và vận hành. Toàn bộ mô-đun Time and Labor (T&L) được thiết kế để giúp doanh nghiệp quản lý chấm công và thời gian làm việc của nhân viên một cách linh hoạt, đáp ứng nhiều mô hình ca kíp, chế độ làm việc khác nhau.
+# Phân tích Oracle Time & Labor
+
+> Dưới đây là phần giải thích chi tiết về Oracle HCM Time and Labor cũng như vai trò của các khái niệm chính trong quá trình cấu hình và vận hành. Toàn bộ mô-đun Time and Labor (T&L) được thiết kế để giúp doanh nghiệp quản lý chấm công và thời gian làm việc của nhân viên một cách linh hoạt, đáp ứng nhiều mô hình ca kíp, chế độ làm việc khác nhau.
 
 ---
 

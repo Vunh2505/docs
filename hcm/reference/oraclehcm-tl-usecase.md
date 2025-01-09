@@ -1,4 +1,6 @@
-Dưới đây là một số cách mà Oracle HCM Time & Labor có thể được cấu hình để giải quyết những use case đặc biệt, có tính chất “phi truyền thống” về ca kíp, chu kỳ làm việc, thời gian nghỉ và lịch làm việc. Các ví dụ bao gồm:
+# Oracle Time & Labor cho các trường hợp phân ca đặc thù
+
+> Dưới đây là một số cách mà Oracle HCM Time & Labor có thể được cấu hình để giải quyết những use case đặc biệt, có tính chất “phi truyền thống” về ca kíp, chu kỳ làm việc, thời gian nghỉ và lịch làm việc. Các ví dụ bao gồm:
 
 - **Ca kíp 3 ca 4 kíp, luân chuyển theo tuần** (thường thấy trong nhà máy, xí nghiệp).  
 - **Các trường hợp ca “choàng”, ca “gãy” trong bệnh viện** (ca sáng/chiều xen kẽ, có thể tách rời, có “khoảng trống” giữa ca).  
