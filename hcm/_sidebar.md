@@ -5,6 +5,7 @@
   - [Organisation](/concepts/org.md)
   - [Absence](/concepts/Absence.md)
   - [Time & Attendance](/concepts/TimeAttendance.md)
+  - [Compensation](/concepts/compensation.md)
 - Architecture
 - Product
 - Technical

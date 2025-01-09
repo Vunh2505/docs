@@ -19,10 +19,19 @@
   <script src="plugins/auth.js"></script>
 
   <script>
+    if (window.$docsify) {
+      window.$docsify = undefined; // Hủy Docsify từ parent
+    }
+    </script>
+
+  <script>
     window.$docsify = {
       name: '',
       repo: '',
+      coverpage: false,
       loadSidebar: true,
+      loadNavbar: true,
+      
       alias: {
       '/.*/_sidebar.md': '/_sidebar.md'
       },
@@ -35,6 +44,13 @@
           '/': 'Sau'
         },
         crossChapter: true
+      },
+      breadcrumb: {
+        showHome: false,
+        homeText: 'Home',
+        separator: ' > ',
+        casing: 'capitalize',
+        size: 'small'
       },
       auth: {
         hashedPassword: '2e3ecdf21b35905eba80e31819ffef6e7ee51cc4cf1773127ccdc8b092a6c51e', // Thay chuỗi hash

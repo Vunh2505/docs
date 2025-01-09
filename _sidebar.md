@@ -1,3 +1,3 @@
 
 - [Home](/)
-- [Giải Pháp Nhân Sự Toàn Diện](/hcm)
+- [Giải Pháp Nhân Sự Toàn Diện](/hcm/)

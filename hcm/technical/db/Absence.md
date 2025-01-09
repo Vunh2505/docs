@@ -1,4 +1,4 @@
-Dưới đây là tài liệu giải thích chi tiết mô hình thiết kế **Absence Management** dựa trên DBML bạn đã cung cấp. Tài liệu này nhằm phục vụ cả mục đích làm tài liệu sản phẩm (giới thiệu mô hình và ý nghĩa nghiệp vụ) cũng như làm tài liệu tham khảo cho nhóm phát triển (mô tả các bảng, quan hệ, ý nghĩa từng cột dữ liệu).
+> Dưới đây là tài liệu giải thích chi tiết mô hình thiết kế **Absence Management** dựa trên DBML bạn đã cung cấp. Tài liệu này nhằm phục vụ cả mục đích làm tài liệu sản phẩm (giới thiệu mô hình và ý nghĩa nghiệp vụ) cũng như làm tài liệu tham khảo cho nhóm phát triển (mô tả các bảng, quan hệ, ý nghĩa từng cột dữ liệu).
 
 ---
 
