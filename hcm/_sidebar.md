@@ -8,6 +8,8 @@
 - Architecture
 - Product
 - Technical
+  - [Absence DB Design](/technical/db/Absence.md)
+  - [Time & Attendance DB design](/technical/db/TA.md)
 - Reference
   - [Các trường hơp phân ca đặc thù](/reference/timeSpecial.md)
   - [Phân tích Oracle Time & Labor](/reference/oraclehcm-TL.md)
