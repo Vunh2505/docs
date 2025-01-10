@@ -7,6 +7,8 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/LIGMATV/docsify-navbar-fixed/navbar-fixed.css">
+
   <!-- Adds the default breadcrumb styling -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-breadcrumb@latest/dist/breadcrumb.min.css">
 </head>
@@ -18,20 +20,14 @@
   <!-- 4) Plugin Auth -->
   <script src="plugins/auth.js"></script>
 
-  <script>
-    if (window.$docsify) {
-      window.$docsify = undefined; // Hủy Docsify từ parent
-    }
-    </script>
-
+ 
   <script>
     window.$docsify = {
       name: 'HCM Reference Hub',
       repo: '',
       coverpage: false,
       loadSidebar: true,
-      loadNavbar: false,
-      
+      loadNavbar: true,
       alias: {
       '/.*/_sidebar.md': '/_sidebar.md'
       },
@@ -88,5 +84,12 @@
 <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true });
+  window.mermaid = mermaid;
+</script>
+<script src="//unpkg.com/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
 </body>
 </html>
